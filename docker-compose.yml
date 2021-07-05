@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+    php-apache:
+        build:
+            context: ./php-apache
+        ports:
+            - 8080:80
+        volumes:
+            - /home/noot/www/moodle:/var/www/html
+            - /home/noot/www/moodledata:/var/www/moodledata
+        links:
+            - mariadb
+            - adminer
+
+    mariadb:
+        image: mariadb
+        restart: always
+        volumes:
+            - mariadb:/var/lib/mysql:cached
+        environment: 
+            MYSQL_DATABASE: moodle
+            MYSQL_ROOT_PASSWORD: moodle
+        command: mysqld --innodb-large-prefix --innodb-file-format=barracuda --innodb-file-per-table
+    
+    adminer:
+        image: adminer
+        restart: always
+        ports: 
+            - 8081:8080
+
+volumes:
+    mariadb:
