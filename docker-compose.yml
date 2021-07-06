@@ -8,8 +8,8 @@ services:
         ports:
             - 8080:80
         volumes:
-            - /home/noot/www/moodle:/var/www/html
-            - /home/noot/www/moodledata:/var/www/moodledata
+            - /Users/tony/www/moodle_311/moodle:/var/www/html:cached
+            - /Users/tony/www/moodle_311/moodledata:/var/www/moodledata:cached
         links:
             - mariadb
             - adminer

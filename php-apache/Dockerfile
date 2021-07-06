@@ -15,7 +15,7 @@ RUN apt-get -y upgrade
 
 # Install moodle php dependencies
 RUN docker-php-ext-install pdo pdo_mysql mysqli
-RUN apt-get install -y libzip-dev sendmail libpng-dev libicu-dev apt-utils re2c g++ zlib1g-dev libmcrypt-dev libxml2-dev build-essential wget
+RUN apt-get install -y libzip-dev sendmail libpng-dev libicu-dev apt-utils re2c g++ zlib1g-dev libmcrypt-dev libxml2-dev build-essential wget poppler-utils
 RUN apt-get clean
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install gd
